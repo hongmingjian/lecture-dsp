@@ -1,0 +1,74 @@
+\documentclass[CJKutf8,xcolor=pdftex,dvipsnames,table]{beamer}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Signals and Systems},
+  pdfauthor={Hong MingJian},
+  pdfsubject={Introduction},
+  pdfpagemode={FullScreen},
+  colorlinks={true},
+  linkcolor={blue},
+}
+\usepackage{CJKutf8}
+\usepackage[export]{adjustbox}
+
+\usetheme{Madrid}%{Warsaw}
+\usecolortheme{default}
+
+%gets rid of bottom navigation bars
+\setbeamertemplate{footline}[page number]{}
+%gets rid of navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+\begin{CJK*}{UTF8}{song}
+
+  \title{\CJKfamily{hei} 数字信号处理}
+  \subtitle{\CJKfamily{hei} 第3章：系统}
+  \author{\CJKfamily{hei} 洪明坚 \hspace{1mm} 桑军}
+  \institute{\CJKfamily{hei} 重庆大学软件学院}
+  \date{\today}
+
+  \AtBeginSection[]
+  {
+    \begin{frame}
+      \frametitle{Outline}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  \frame{\titlepage}
+  \frame{\frametitle{目录}\tableofcontents}
+  
+  \section{系统}
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{定义}
+    \begin{itemize}
+    \item 新华字典：一种可以觉察的物理量或脉冲(如电压、电流、磁场强度等)，通过它们能传达消息或信息。
+    \item 维基百科：A signal is a function that conveys information about the behavior of a system or attributes of some phenomenon.
+    \item 例子
+        \begin{itemize}
+        \item 声音、温度、电压/电流、光强等等
+        \end{itemize}    
+    \end{itemize}
+  \end{frame}
+    
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame}    
+    
+\end{CJK*}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
