@@ -836,7 +836,152 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
       \includegraphics[scale=.5]{question}
     \end{center}
   \end{frame} 
-        
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{推而广之}
+    \begin{center}
+      \includegraphics[scale=.3]{cqu-la-def-3-6-1}
+    \end{center}
+  \end{frame}   
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{推而广之}
+    \begin{center}
+      \includegraphics[scale=.5]{cqu-la-def-3-5-3}
+      \includegraphics[scale=.5]{cqu-la-def-3-5-4}
+
+    \end{center}
+  \end{frame}   
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{推而广之}
+    \begin{center}
+      \includegraphics[scale=.5]{cqu-la-def-3-6-5}
+
+    \end{center}
+  \end{frame}   
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{推而广之}
+    \begin{center}
+      \includegraphics[scale=.35]{cqu-la-def-3-1-5}
+
+    \end{center}
+  \end{frame}   
+
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{推而广之}
+    \begin{center}
+      \includegraphics[scale=.5]{cqu-la-def-3-4-1}
+
+    \end{center}
+  \end{frame}   
+
+  
+    %% PAGE
+  \begin{frame}
+    \frametitle{傅立叶级数}
+    \begin{itemize}
+	\item 周期为$T$的函数集$V(T)=\{x(t)=x(t+T)\}$是一个线性/向量空间
+	\item 为$V(T)$定义内积，即$x(t), y(t) \in V(T)$
+	\[ 
+	<x(t), y(t)> \triangleq \frac{1}{T}\int_T x(t) \overline{y(t)} dt
+	\]
+	
+	\item $\{\phi_k(t) = e^{jk\frac{2\pi}{T}t}, k \in \mathbb{Z}\}$是$V(T)$的一组标准正交基
+		\begin{itemize}
+		\item 因为
+		\[
+<\phi_m(t), \phi_n(t)>=\frac{1}{T}\int_T \phi_{(m-n)}(t)dt = 
+\left\{
+    \begin {aligned}
+         & 1 \quad & m = n \\
+         & 0 \quad & m \neq n                 
+    \end{aligned}
+\right.
+		\]	
+		\end{itemize}
+		
+	\item $\forall x(t) \in V(T)$，有
+	\[
+	x(t)=\sum_k c_k \phi_k(t) = \sum_k c_k e^{jk\frac{2\pi}{T}t}
+	\]
+		\begin{itemize}
+		\item 其中
+		\[
+		c_k = <x(t), \phi_k(t)> = \frac{1}{T} \int_T x(t) e^{-jk\frac{2\pi}{T}t} dt
+		\]
+		\end{itemize}
+
+
+	\end{itemize}
+
+  \end{frame}  
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{几何解释}
+    \begin{itemize}
+    \item \[x_{N}(t)=\sum_{k=-N}^{N}c_k \phi_k(t) \]是$x(t)$在平面$span\{\phi_{-N}, \hdots, \phi_0, \hdots, \phi_N\}$的正交投影。根据勾股定理
+    \[
+    ||x||^2 = ||x_N||^2 + ||x-x_N||^2 
+    \]
+    \item 当\[ \lim_{N\to\infty}||x-x_N||^2=\lim_{N\to\infty}\int_{T}|x(t)-x_{N}(t)|^2dt = 0 \]时
+    \[ x(t) = \lim_{N\to\infty} x_N(t) \]
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.2]{msqgeo}
+    \end{center}
+  \end{frame}   
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame} 
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{为什么是$e^{jk\omega t}$?}
+    \begin{center}
+      \includegraphics[scale=.4]{cqu-la-def-5-1-1}
+      \includegraphics[scale=.4]{cqu-la-def-5-1-1-4}
+      \includegraphics[scale=.4]{cqu-la-def-5-1-1-5}
+    \end{center}
+  \end{frame}   
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{为什么是$e^{jk\omega t}$?}
+    \begin{itemize}
+    \item 因为复指数信号是LTI系统的特征函数
+    \[ e^{jk\omega t} \rightarrow H(j\omega)e^{jk\omega t} \]
+    \item $\{e^{jk\frac{2\pi}{T} t}, k \in \mathbb{Z}\}$不仅线性无关，而且标准正交
+    \end{itemize}
+  \end{frame}  
+    
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame}   
+          
 \end{CJK*}
 \end{document}
 
@@ -844,3 +989,4 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
 %%% mode: latex
 %%% TeX-master: t
 %%% End: 
+
