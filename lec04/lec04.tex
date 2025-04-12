@@ -13,6 +13,7 @@
 \usepackage{mathptmx} %pdfTeX error: pdflatex (file fmex9.pfb): cannot open Type 1 font file for reading
                                                  %https://forum.ubuntu.com.cn/viewtopic.php?t=269943
 \usepackage{mathtools}
+\usepackage[mathscr]{urwchancal}
 
 \usetheme{Madrid}%{Warsaw}
 \usecolortheme{default}
@@ -357,13 +358,13 @@ x(t) =
     \frametitle{性质}
     \begin{itemize}
     \item 用
-    \[ x(t) \xleftrightarrow{FS} c_k \]
+    \[ x(t) \xleftrightarrow{\mathscr{FS}} c_k \]
     表示周期信号及其傅立叶级数之间的关系    
     \item 性质
     	\begin{itemize}
-    	\item 线性：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{FS} a_k$，$y(t) \xleftrightarrow{FS} b_k$，则$Ax(t)+By(t) \xleftrightarrow{FS} Aa_k+Bb_k$
-    	\item 时移：$x(t-t_0) \xleftrightarrow{FS} e^{-jk\omega_0 t_0} c_k $
-		\item 时间反转：$x(-t) \xleftrightarrow{FS} c_{-k} $
+    	\item 线性：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{\mathscr{FS}} a_k$，$y(t) \xleftrightarrow{\mathscr{FS}} b_k$，则$Ax(t)+By(t) \xleftrightarrow{\mathscr{FS}} Aa_k+Bb_k$
+    	\item 时移：$x(t-t_0) \xleftrightarrow{\mathscr{FS}} e^{-jk\omega_0 t_0} c_k $
+		\item 时间反转：$x(-t) \xleftrightarrow{\mathscr{FS}} c_{-k} $
     	\end{itemize}
 	\end{itemize}
   \end{frame}  
@@ -391,7 +392,7 @@ x(t) =
     \begin{itemize}
     \item 性质
     	\begin{itemize}
-		\item 相乘：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{FS} a_k$，$y(t) \xleftrightarrow{FS} b_k$，则\[x(t)y(t) \xleftrightarrow{FS} \sum_{n=-\infty}^{\infty}a_n b_{k-n}\]
+		\item 相乘：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{\mathscr{FS}} a_k$，$y(t) \xleftrightarrow{\mathscr{FS}} b_k$，则\[x(t)y(t) \xleftrightarrow{\mathscr{FS}} \sum_{n=-\infty}^{\infty}a_n b_{k-n}\]
 			\begin{itemize}
 			\item 亦即：时域相乘$\xleftrightarrow{}$频域卷积，vice versa
 			\end{itemize}
@@ -619,15 +620,15 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     \frametitle{性质}
     \begin{itemize}
     \item 用
-    \[ x[n] \xleftrightarrow{FS} c_k \]
+    \[ x[n] \xleftrightarrow{\mathscr{FS}} c_k \]
     表示周期信号及其傅立叶级数之间的关系    
     \item 性质大部分与连续时间的情况类似
     	\begin{itemize}
-		\item 相乘：如果$x[n]$与$y[n]$周期相同，且$x[n] \xleftrightarrow{FS} a_k$，$y[n] \xleftrightarrow{FS} b_k$，则\[x[n]y[n] \xleftrightarrow{FS} \sum_{l=<N>}a_l b_{k-l}\]
+		\item 相乘：如果$x[n]$与$y[n]$周期相同，且$x[n] \xleftrightarrow{\mathscr{FS}} a_k$，$y[n] \xleftrightarrow{\mathscr{FS}} b_k$，则\[x[n]y[n] \xleftrightarrow{\mathscr{FS}} \sum_{l=<N>}a_l b_{k-l}\]
 			\begin{itemize}
 			\item 这种运算称为周期卷积(periodic convolution)
 			\end{itemize}
-    	\item 一次差分：$x[n] - x[n-1] \xleftrightarrow{FS} (1-e^{-jk\omega_0}) c_k $
+    	\item 一次差分：$x[n] - x[n-1] \xleftrightarrow{\mathscr{FS}} (1-e^{-jk\omega_0}) c_k $
 		\item 帕斯瓦尔(Parseval)定理\[ \frac{1}{N}\sum_{n=<N>}|x[n]|^2 = \sum_{k=<N>} |c_k|^2 \]
     	\end{itemize}
 	\end{itemize}
