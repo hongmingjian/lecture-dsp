@@ -205,7 +205,7 @@ x(t) =
       \includegraphics[scale=.2]{harmonic-2}
     \end{center}
     \begin{itemize}
-    \item 其中$DC=a_0$或$c_0$，称为直流分量(Direct-Current component) 
+    \item 其中$DC=c_0$，称为直流分量(Direct-Current component) 
       	\begin{itemize}
 		\item 代表$x(t)$在一个周期内的平均值。
 		\end{itemize}
@@ -451,7 +451,7 @@ x(t) =
   \begin{frame}
     \frametitle{求解$c_k$}
     \begin{itemize}
-    \item 上述方程只有$N$个未知数$c_k$。对$x[n]$的$N$个取值，可以得到N个方程
+    \item 方程求解：上述方程只有$N$个未知数$c_k$，对$x[n]$的$N$个取值，可以得到N个方程
     \begin{center}
     \begin{tabular}{lll}
     $x[0]$ & = & $\sum_{k=<N>} c_k$    \\
@@ -626,7 +626,7 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     	\begin{itemize}
 		\item 相乘：如果$x[n]$与$y[n]$周期相同，且$x[n] \xleftrightarrow{\mathscr{FS}} a_k$，$y[n] \xleftrightarrow{\mathscr{FS}} b_k$，则\[x[n]y[n] \xleftrightarrow{\mathscr{FS}} \sum_{l=<N>}a_l b_{k-l}\]
 			\begin{itemize}
-			\item 这种运算称为周期卷积(periodic convolution)
+			\item 右边的运算称为周期卷积(periodic convolution)
 			\end{itemize}
     	\item 一次差分：$x[n] - x[n-1] \xleftrightarrow{\mathscr{FS}} (1-e^{-jk\omega_0}) c_k $
 		\item 帕斯瓦尔(Parseval)定理\[ \frac{1}{N}\sum_{n=<N>}|x[n]|^2 = \sum_{k=<N>} |c_k|^2 \]
@@ -661,7 +661,8 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     \begin{itemize}
     \item 假设$h(t)$是一个LTI系统的单位冲激响应，则该系统对输入$x(t)=e^{st}, s \in \mathbb{C}$的响应
     	\begin{align*}
- 		y(t) & = \int_R h(\tau)x(t - \tau )d\tau \\
+ 		y(t) & = x(t) * h(t) \\
+		& = \int_R h(\tau)x(t - \tau )d\tau \\
 		& = \int_R h(\tau )e^{s(t-\tau )}d\tau    \\
 		& = e^{st} \int_R h(\tau)e^{-s\tau}d\tau \\
 		& = H(s)e^{st}
@@ -678,7 +679,8 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     \begin{itemize}
     \item 假设$h[n]$是一个LTI系统的单位冲激响应，则该系统对输入$x[n]=z^{n}, z \in \mathbb{C}$的响应
     	\begin{align*}
- 		y[n] & = \sum_k h[k]x[n-k] \\
+ 		y[n] & = x[n] * h[n] \\
+		& = \sum_k h[k]x[n-k] \\
 		& = \sum_k h[k]z^{n-k}    \\
 		& = z^{n} \sum_k h[k]z^{-k} \\
 		& = H(z)z^{n}
@@ -693,10 +695,16 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
   \begin{frame}
     \frametitle{LTI系统的频率响应}
     \begin{itemize}
-    \item 如果$s=j\omega$或$z=e^{j\omega}$，
+    \item 对于
 		\begin{itemize}
-		\item 连续：\[ H(j\omega) = \int_R h(t)e^{-j\omega t} dt \]
-		\item 离散：\[ H(e^{j\omega}) = \sum_k h[k]e^{-j\omega k}\]
+		\item 连续时间，令$s=j\omega$
+		\[ 
+			H(j\omega) = \int_R h(t)e^{-j\omega t} dt 
+		\]
+		\item 离散时间，令$z=e^{j\omega}$
+		\[ 
+			H(e^{j\omega}) = \sum_k h[k]e^{-j\omega k}
+		\]
 		\end{itemize}
 	\item 称$H(j\omega)/H(e^{j\omega})$为系统的频率响应(frequency response)
 		\begin{itemize}
@@ -709,8 +717,15 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
   \begin{frame}
     \frametitle{LTI系统的特征函数}
     \begin{itemize}
-    \item 若系统对一个信号的响应仅是一个常数乘以输入，则称该信号为系统的特征函数(eigenfunction)，该常数称为系统的特征值(eigenvalue)
-    \item 根据$e^{st} \rightarrow H(s)e^{st}$和$z^{n} \rightarrow H(z)z^{n}$
+    \item 若系统对输入信号的响应是一个常数乘以输入，则称该输入信号为该系统的特征函数(eigenfunction)，该常数称为系统的特征值(eigenvalue)
+    \item 根据
+    \[
+    	e^{st} \rightarrow H(s)e^{st}
+	\]
+	和
+	\[
+		z^{n} \rightarrow H(z)z^{n}
+	\]
 	    \begin{itemize}
 		\item 因此，复指数信号是LTI系统的特征函数
 		\end{itemize}
@@ -737,8 +752,7 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     x(t) = \sum_k c_k e^{jk\omega_0 t} \\
     x[n] = \sum_{k=<N>} c_k e^{jk\omega_0 n}
     \end{align*}
-	\item $h(t)/h[n]$是一个系统的单位冲激响应，则
-	
+	\item $h(t)/h[n]$是一个系统的单位冲激响应，则	
 	\begin{align*}
 	 y(t) = \sum_k c_k H(jk\omega_0) e^{jk\omega_0 t} \\
 	 y[n] = \sum_{k=<N>} c_k H(e^{jk\omega_0 k}) e^{jk\omega_0 n}
@@ -973,7 +987,7 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     \begin{itemize}
     \item 因为复指数信号是LTI系统的特征函数
     \[ e^{jk\omega t} \rightarrow H(j\omega)e^{jk\omega t} \]
-    \item $\{e^{jk\frac{2\pi}{T} t}, k \in \mathbb{Z}\}$不仅线性无关，而且标准正交
+    \item $\{\phi_k(t)=e^{jk\omega t}, k \in \mathbb{Z}\}$不仅线性无关，而且标准正交
     \end{itemize}
   \end{frame}  
     
