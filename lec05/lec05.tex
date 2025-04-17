@@ -27,7 +27,7 @@
 \begin{CJK*}{UTF8}{song}
 
   \title{\CJKfamily{hei} 数字信号处理}
-  \subtitle{\CJKfamily{hei} 第5讲：连续时间傅立叶变换}
+  \subtitle{\CJKfamily{hei} 第5讲：傅立叶变换}
   \author{\CJKfamily{hei} 洪明坚}
   \institute{\CJKfamily{hei} 重庆大学软件学院}
   \date{\today}
@@ -47,7 +47,7 @@
   
   %% PAGE
   \begin{frame}
-    \frametitle{傅立叶变换的引入}
+    \frametitle{引入}
     \begin{itemize}
     \item 周期为$T$的方波串 \\
 	\begin{tabular}{ll}
@@ -79,7 +79,7 @@ x(t) =
 
   %% PAGE
   \begin{frame}
-    \frametitle{傅立叶变换的引入}
+    \frametitle{引入}
     \begin{itemize}
     \item $Tc_k$及其包络(envelop)曲线$\frac{2sin(\omega T_1)}{\omega}$的图像：(a)$T=4T_1$, (b)$T=8T_1$, (c)$T=16T_1$
 		    \begin{center}
@@ -92,7 +92,7 @@ x(t) =
    
   %% PAGE
   \begin{frame}
-    \frametitle{傅立叶变换的定义}
+    \frametitle{定义}
     \begin{itemize}
     \item 对于任意函数$x(t)$，定义
     \begin{itemize}
@@ -287,7 +287,7 @@ X(j\omega) =
     \end{center}
   \end{frame} 
   
-  \section{周期信号的傅立叶变换}
+  \section{连续时间周期信号的傅立叶变换}
   
   %% PAGE
   \begin{frame}
@@ -372,7 +372,7 @@ X(j\omega) =
   \begin{frame}
     \frametitle{性质}
     \begin{itemize}
-    \item 对偶性(Duality)
+    \item 对偶(Duality)
     	\begin{itemize}
 		\item
 \begin{align*}
@@ -389,27 +389,7 @@ e^{j\omega_0 t} & \xleftrightarrow{\mathscr{F}} 2\pi\delta(\omega-\omega_0)
     		\begin{center}
       		\includegraphics[scale=.3]{ftduality}
     		\end{center}
-		\end{itemize}
-
-%    \[
-%x(t) = 
-%\left\{
-%    \begin {aligned}
-%         & 1 \quad & |t| < T_1 \\
-%         & 0 \quad & otherwise                  
-%    \end{aligned}
-%\right. \xleftrightarrow{\mathscr{F}} \frac{2sin(\omega T_1)}{\omega} \hspace{1cm}
-%\frac{sin(Wt)}{\pi t} \xleftrightarrow{\mathscr{F}} 
-%X(j\omega) = 
-%\left\{
-%    \begin {aligned}
-%         & 1 \quad & |\omega| < W \\
-%         & 0 \quad & otherwise                  
-%    \end{aligned}
-%\right. 
-%    \]  
-   
-      
+		\end{itemize}      
     \end{itemize}
 
   \end{frame}    
@@ -419,19 +399,29 @@ e^{j\omega_0 t} & \xleftrightarrow{\mathscr{F}} 2\pi\delta(\omega-\omega_0)
   \begin{frame}
     \frametitle{性质}
     \begin{itemize}
-    \item 帕斯瓦尔定理
+%    \item 帕斯瓦尔定理
+%    \[
+%    \int_{-\infty}^{\infty}|x(t)|^2dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|X(j\omega)|^2d\omega
+%    \]
+    \item 卷积
     \[
-    \int_{-\infty}^{\infty}|x(t)|^2dt=\frac{1}{2\pi}\int_{-\infty}^{\infty}|X(j\omega)|^2d\omega
+    	x_1(t)*x_2(t) \xleftrightarrow{\mathscr{F}} X_1(j\omega)X_2(j\omega)
     \]
-    \item 卷积定理：LTI系统的单位冲激响应$h(t)$，频率响应
+    	\begin{itemize}
+		\item 因为LTI系统的频率响应$H(j\omega)$是单位脉冲响应$h(t)$的傅立叶变换
+		\[
+			H(j\omega)=\mathscr{F}(h(t))=\int_{\mathbb{R}}h(t)e^{-j\omega t}dt
+		\]
+		所以
+		\[
+			x(t)*h(t) \xleftrightarrow{\mathscr{F}} X(j\omega)H(j\omega)
+		\]
+    	\end{itemize}
+
+    \item 相乘
     \[
-    H(j\omega)=\mathscr{F}(h(t))=\int_{\mathbb{R}}h(t)e^{-j\omega t}dt
-    \]
-    则
-    \[
-    h(t)*x(t) \xleftrightarrow{\mathscr{F}} H(j\omega)X(j\omega)
-    \]
-    	
+    	x_1(t)x_2(t) \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi} \int_{-\infty}^{\infty}X_1(j\theta)X_2(j(\omega-\theta))d\theta
+    \]    	
     \end{itemize}
   \end{frame}   
   	
@@ -477,7 +467,6 @@ H(j\omega) =
     \end{center}
   \end{frame}  
 
-  
   %% PAGE
   \begin{frame}
     \frametitle{Questions}
@@ -488,7 +477,319 @@ H(j\omega) =
       \includegraphics[scale=.5]{question}
     \end{center}
   \end{frame}  
+  
+  \section{离散时间傅立叶变换}
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{定义}
+    \begin{itemize}
+    \item 对于任意序列$x[n]$，定义
+    \begin{itemize}
+    	\item 傅立叶变换
+    	\[
+			X(e^{j\omega}) = \sum_{n=-\infty}^{\infty}x[n]e^{-j\omega n}    
+    	\]
+			\begin{itemize}
+			\item 注意：$X(e^{j\omega})$以$2\pi$为周期
+			\end{itemize}	
+    	\item 傅立叶逆变换
+    	\[
+			x[n] = \frac{1}{2\pi}\int_{2\pi}X(e^{j\omega})e^{j\omega n}d\omega    
+    	\]
+    	\end{itemize}
+    \end{itemize}
+
+  \end{frame}   
+       
+  %% PAGE
+  \begin{frame}
+    \frametitle{例子}
+    \begin{itemize}
+    \item 矩形脉冲序列 \\
+	\begin{tabular}{ll}
+	\raisebox{-.5\height}
+
+    \begin{math}
+x[n] = 
+\left\{
+    \begin {aligned}
+         & 1 \quad & |n| < N_1 \\
+         & 0 \quad & otherwise                  
+    \end{aligned}
+\right.
+	\end{math}
+
+&
+    \includegraphics[valign=m,scale=.4]{ss-c-f5-6a}    \\
+    \end{tabular} 
+    
+    \item
+    \[
+    X(e^{j\omega}) = \sum_{n=-N_1}^{N_1}e^{-j\omega n} = \frac{sin(\omega (N_1 + \frac{1}{2}))}{sin(\omega /2)}
+    \]
+    	\begin{center}
+    	\includegraphics[scale=.5]{ss-c-f5-6b}
+    	\end{center}    
+		\begin{itemize}
+		\item 注意：低频在$2k\pi$周围，而高频在$(2k+1)\pi$周围
+		\end{itemize}
+    \end{itemize}
+
+  \end{frame}  
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{傅立叶变换存在的充分条件}
+    \begin{itemize}
+    \item 对于正变换，如果
+    \[
+    	 \sum_{n=-\infty}^{\infty}|x[n]| < \infty
+    \]
+    则$X(e^{j\omega})$存在
+    	\begin{itemize}
+		\item 因为LTI系统的频率响应$H(e^{j\omega})$是单位脉冲响应$h[n]$的傅立叶变换
+		\[
+			H(e^{j\omega})=\mathscr{F}(h[n])=\sum_n h[n]e^{-j\omega n}
+		\]   
+		\item 所以，如果一个LTI系统是稳定的，即
+		\[
+			\sum_n|h[n]| < \infty
+		\]
+		它的频率响应总是存在。		
+		\end{itemize}
+    \item 逆变换只涉及有限积分区间，一般不存在收敛性问题。
+    
+ 
+    \end{itemize}
+
+  \end{frame} 
         
+  %% PAGE
+  \begin{frame}
+    \frametitle{例子}
+    \begin{itemize}
+    \item 单位脉冲序列$x[n]=\delta[n]$的傅立叶变换$X(e^{j\omega})=1$
+	\item 
+	\[
+	\hat{x}[n] = \frac{1}{2\pi}\int_{-W}^{W} e^{j\omega n}d\omega = \frac{sin(Wn)}{\pi n}
+	\]    
+    	\begin{center}
+    	\includegraphics[scale=.3]{ss-c-f5-7}
+    	\end{center}   
+		\begin{itemize}
+		\item 没有Gibbs现象！
+		\end{itemize}
+    \end{itemize}
+
+  \end{frame}    
+        
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame}     
+  
+  \section{离散时间周期信号的傅立叶变换}
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{复指数信号}
+    \begin{itemize}
+    \item 周期为$N$的复指数信号
+    \[
+    	x[n]=e^{j\omega_0 n}, \omega_0=\frac{2\pi}{N}
+    \]
+    它的傅立叶变换
+    \[
+    	X(e^{j\omega})=\sum_{n=-\infty}^{\infty}e^{j\omega_0 n}e^{-j\omega n}=\sum_{l=-\infty}^{\infty}2\pi \delta(\omega - \omega_0 - 2\pi l)
+    \]
+    	\begin{center}
+    	\includegraphics[scale=.4]{ss-c-f5-8}
+    	\end{center}  
+%	\item 注意
+%		\begin{itemize}
+%		\item 该信号不满足收敛的充分条件
+%		\item 暂时只能通过傅立叶逆变换来验证正确性
+%		\end{itemize}
+
+    \end{itemize}
+  \end{frame}     
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{一般的周期信号}
+    \begin{itemize}
+    \item 周期为$N$的$x[n]$可以做傅立叶级数展开
+    \[
+    	x[n] = \sum_{k=<N>} c_k e^{jk\omega_0 n}
+    \]
+    它的傅立叶变换
+    \[
+    	X(e^{j\omega})=\sum_{k=-\infty}^{\infty}2\pi c_k \delta(\omega - k\omega_0)
+    \]
+    \end{itemize}
+
+  \end{frame}   
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{例子}
+    \begin{itemize}
+    \item 正弦信号
+    \[
+    	x[n]=cos(\omega_0 n)=\frac{1}{2}e^{jk\omega_0 n}+\frac{1}{2}e^{-jk\omega_0 n}
+	\]
+	\item 的傅立叶变换
+        \begin{align*}
+ 		X(e^{j\omega}) & = \sum_{l=-\infty}^{\infty}\pi \delta(\omega - \omega_0 - 2\pi l)+\sum_{l=-\infty}^{\infty}\pi \delta(\omega + \omega_0 - 2\pi l) \\
+		& = \pi \delta(\omega - \omega_0)+\pi \delta(\omega + \omega_0), -\pi \leq \omega < \pi   
+    	\end{align*} 	
+	
+    	\begin{center}
+    	\includegraphics[scale=.5]{ss-c-f5-10}
+    	\end{center}
+    \end{itemize}
+
+  \end{frame}    
+  
+  %% PAGE
+  \begin{frame}
+    \frametitle{例子}
+    \begin{itemize}
+    \item 周期单位冲激串
+    \[
+	    x[n]=\sum_{k=-\infty}^{\infty}\delta[n-kN]
+    \]
+    \item 的傅立叶级数系数
+    \[
+    	c_k=\frac{1}{N}\sum_{n=<N>}x[n]e^{-jk\omega_0 n}=\frac{1}{N}
+    \]
+	\item 因此
+        \[
+ 			X(e^{j\omega}) = \frac{2\pi}{N}\sum_{k=-\infty}^{\infty}\delta(\omega - k\frac{2\pi}{N})   
+    	\]	
+	
+    	\begin{center}
+    	\includegraphics[scale=.35]{ss-c-f5-11}
+    	\end{center}
+    \end{itemize}
+
+  \end{frame}    
+    
+  %% PAGE
+  \begin{frame}
+    \frametitle{基本傅立叶变换对}
+    \begin{center}
+      \includegraphics[scale=.32]{ss-c-t5-2a}
+    \end{center}
+  \end{frame}  
+   
+  %% PAGE
+  \begin{frame}
+    \frametitle{基本傅立叶变换对}
+    \begin{center}
+      \includegraphics[scale=.32]{ss-c-t5-2b}
+    \end{center}
+  \end{frame}      
+    
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame}       
+        
+	\section{离散时间傅立叶变换的性质}
+
+  %% PAGE
+  \begin{frame}
+    \frametitle{性质}
+    \begin{itemize}
+    \item 周期
+    \[
+    	X(e^{j(\omega+2\pi)})=X(e^{j\omega})
+	\]
+    \item 时移
+    \[
+    	x[n-n_0] \xleftrightarrow{\mathscr{F}} e^{-j\omega n_0}X(e^{j\omega})
+	\]
+    \item 频移
+    \[
+    	e^{j\omega_0 n}x[n] \xleftrightarrow{\mathscr{F}} X(e^{j(\omega-\omega_0)})
+	\]	
+	例子
+    	\begin{itemize}
+    	\item 理想高通滤波器是理想低通滤波器的半个周期(即$\pi$)频移 \\
+	\begin{tabular}{ll}
+	\raisebox{-.5\height}
+
+$H_{hp}(e^{j\omega})=H_{lp}(e^{j(\omega-\pi)})$
+
+&
+    \includegraphics[valign=m,scale=.28]{ss-c-f5-12}    \\
+    \end{tabular}  
+    	
+		\item 因为LTI系统的频率响应$H(e^{j\omega})$是单位脉冲响应$h[n]$的傅立叶变换
+		\[
+			H(e^{j\omega})=\mathscr{F}(h[n])=\sum_n h[n]e^{-j\omega n}
+		\]
+		所以$h_{hp}[n]=e^{j\pi n}h_{lp}[n]=(-1)^nh_{lp}[n]$
+		
+    	\end{itemize}
+	
+	\end{itemize}
+  \end{frame}   
+  	 
+  %% PAGE
+  \begin{frame}
+    \frametitle{性质}
+    \begin{itemize}
+    \item 卷积
+    \[
+    	x_1[n]*x_2[n] \xleftrightarrow{\mathscr{F}} X_1(e^{j\omega})X_2(e^{j\omega})
+	\]    
+    \item 相乘
+    \[
+    	x_1[n]x_2[n] \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi}\int_{2\pi}X_1(e^{j\theta})X_2(e^{j(\omega-\theta)})d\theta
+	\] 	
+		\begin{itemize}
+		\item 注意：右边是周期卷积
+		\end{itemize}
+	\end{itemize}
+  \end{frame}   
+	
+  %% PAGE
+  \begin{frame}
+    \frametitle{性质}
+    \begin{itemize}
+    \item 对偶
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.32]{ss-c-t5-3}
+    \end{center}
+  \end{frame}  
+  	        
+  %% PAGE
+  \begin{frame}
+    \frametitle{Questions}
+    \begin{itemize}
+    \item Any questions?
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.5]{question}
+    \end{center}
+  \end{frame} 
+  	        
 \end{CJK*}
 \end{document}
 
