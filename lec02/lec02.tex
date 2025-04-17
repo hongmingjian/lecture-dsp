@@ -24,7 +24,7 @@
 
   \title{\CJKfamily{hei} 数字信号处理}
   \subtitle{\CJKfamily{hei} 第2章：信号}
-  \author{\CJKfamily{hei} 洪明坚 \hspace{1mm} 桑军}
+  \author{\CJKfamily{hei} 洪明坚}
   \institute{\CJKfamily{hei} 重庆大学软件学院}
   \date{\today}
 
@@ -455,10 +455,12 @@ u[n] =
   \begin{frame}
     \frametitle{指数信号和正弦信号}
     \begin{itemize}
-    \item 一般情况下，$A$用极坐标表示为$A=|A|e^{j\theta}$，$a=r+j\omega_0$
+    \item 当$A, a \in \mathbb{C}$时，用极坐标表示$A=|A|e^{j\theta}$，用笛卡尔坐标表示$a=r+j\omega_0$
+    \begin{itemize}
     \item 则$x(t)=Ae^{at}=|A|e^{rt}e^{j(\omega_0 t+\theta)}$
     \\ $=|A|e^{rt}cos(\omega_0 t + \theta)+j|A|e^{rt}sin(\omega_0 t + \theta)$
     \item 这种具有指数衰减振幅的正弦信号称为阻尼正弦振荡(damped sinusoids)函数
+    \end{itemize}
     \end{itemize}
     \begin{center}
       \includegraphics[scale=.5]{dampedsinusoids}

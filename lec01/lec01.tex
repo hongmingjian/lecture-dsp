@@ -82,14 +82,11 @@
     \begin{itemize}
     \item 信号与系统(第2版)，Alan V. Oppenheim等著，刘树棠 译
     \item 数字信号处理——基于计算机的方法(第4版)，Sanjit K. Mitra著，余翔宇 译
-    \item 数字信号处理(第5版)，高西全、丁玉美 编著    
     \end{itemize}
     \begin{center}
       \includegraphics[scale=.31]{signalsandsystems}
       \hspace{1mm}
       \includegraphics[scale=.35]{mitradsp}
-      \hspace{1mm}
-      \includegraphics[scale=.25]{gaodsp}
     \end{center}
   \end{frame}
   
@@ -117,6 +114,7 @@
   \end{frame}
   
   \section{数学准备}
+  
   %% PAGE
   \begin{frame}
     \frametitle{复数} 
@@ -141,7 +139,24 @@
     \end{itemize}
   \end{frame}  
   
+  %% PAGE
+  \begin{frame}
+    \frametitle{常用公式} 
+    \begin{itemize}
+    \item 有限项和公式：
+    	\[
+\sum_{n=0}^{N-1}\alpha^n = 
+\left\{
+    \begin {aligned}
+         & N \quad & \alpha=1 \\
+         & \frac{1-\alpha^N}{1-\alpha} \quad & otherwise                  
+    \end{aligned}
+\right.
+		\]        
 
+    \item 无限项和公式：若$|\alpha|<1$，\[ \sum_{n=0}^{\infty}\alpha^n=\frac{1}{1-\alpha} \]   
+    \end{itemize}
+  \end{frame}  
 
 \end{CJK*}
 \end{document}
