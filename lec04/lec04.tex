@@ -706,9 +706,17 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
 			H(e^{j\omega}) = \sum_k h[k]e^{-j\omega k}
 		\]
 		\end{itemize}
-	\item 称$H(j\omega)/H(e^{j\omega})$为系统的频率响应(frequency response)
+	\item 称$H(j\omega)/H(e^{j\omega})$为连续/离散LTI系统的频率响应(frequency response)
 		\begin{itemize}
-		\item 其中$H(e^{j\omega})$是以$2\pi$为周期的连续函数，它的傅立叶级数的系数是什么？
+		\item 因为
+		\begin{align*}
+			Y(j\omega) & = H(j\omega)X(j\omega) \\
+			Y(e^{j\omega}) & = H(e^{j\omega})X(e^{j\omega})
+		\end{align*}
+		\item 所以，有$|Y|=|H||X|$和$\sphericalangle Y=\sphericalangle H+\sphericalangle X$
+			\begin{itemize}
+			\item 称$|H|$为LTI系统的增益(gain), $\sphericalangle H$为相移(phase shift)。
+			\end{itemize}
 		\end{itemize}
     \end{itemize}
   \end{frame} 
