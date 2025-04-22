@@ -461,6 +461,26 @@ H(j\omega) =
 
   %% PAGE
   \begin{frame}
+    \frametitle{性质}
+    \begin{itemize}
+    \item 定义
+    \[
+    	p(t) = \frac{|x(t)|^2}{\int_R |x(\tau)|^2d\tau}, P(\omega) = \frac{|X(j\omega)|^2}{\int_R |X(j\theta)|^2d\theta}
+    \]
+    分别为时域和频域的归一化能量密度函数。
+    \item 则$x(t)$和$X(j\omega)$的均值和标准差
+    \begin{align*}
+    	t_0 & = \int_R tp(t)dt, \Delta t = \sqrt{\int_R (t-t_0)^2 p(t)dt} \\
+		\omega_0 & = \int_R \omega P(\omega)d\omega, \Delta \omega = \sqrt{\int_R (\omega-\omega_0)^2 P(\omega)d\omega}
+    \end{align*}
+	\begin{block}{测不准原理(Uncertainty principle)}
+		$\Delta t \Delta \omega \geq \frac{1}{2}$，即信号不可能在时域和频域同时被准确定位。时域越短，频域越长；频域越短，时域越长。
+	\end{block}	
+    \end{itemize}
+  \end{frame}   
+
+  %% PAGE
+  \begin{frame}
     \frametitle{性质汇总}
     \begin{center}
       \includegraphics[scale=.28]{ss-c-t4-1}
