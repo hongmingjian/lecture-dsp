@@ -392,7 +392,10 @@ x(t) =
     \begin{itemize}
     \item 性质
     	\begin{itemize}
-		\item 相乘：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{\mathscr{FS}} a_k$，$y(t) \xleftrightarrow{\mathscr{FS}} b_k$，则\[x(t)y(t) \xleftrightarrow{\mathscr{FS}} \sum_{n=-\infty}^{\infty}a_n b_{k-n}\]
+		\item 相乘：如果$x(t)$与$y(t)$周期相同，且$x(t) \xleftrightarrow{\mathscr{FS}} a_k$，$y(t) \xleftrightarrow{\mathscr{FS}} b_k$，则
+		\[
+			x(t)y(t) \xleftrightarrow{\mathscr{FS}} \sum_{n=-\infty}^{\infty}a_n b_{k-n} = a \ast b
+		\]
 			\begin{itemize}
 			\item 亦即：时域相乘$\xleftrightarrow{}$频域卷积，vice versa
 			\end{itemize}
@@ -624,7 +627,10 @@ c_k = \frac{1}{N} \sum_{n=-N_1}^{N_1}e^{-jk\omega_0 n} =
     表示周期信号及其傅立叶级数之间的关系    
     \item 性质大部分与连续时间的情况类似
     	\begin{itemize}
-		\item 相乘：如果$x[n]$与$y[n]$周期相同，且$x[n] \xleftrightarrow{\mathscr{FS}} a_k$，$y[n] \xleftrightarrow{\mathscr{FS}} b_k$，则\[x[n]y[n] \xleftrightarrow{\mathscr{FS}} \sum_{l=<N>}a_l b_{k-l}\]
+		\item 相乘：如果$x[n]$与$y[n]$周期相同，且$x[n] \xleftrightarrow{\mathscr{FS}} a_k$，$y[n] \xleftrightarrow{\mathscr{FS}} b_k$，则
+		\[
+			x[n]y[n] \xleftrightarrow{\mathscr{FS}} \sum_{l=<N>}a_l b_{k-l} = a\circledast b
+		\]
 			\begin{itemize}
 			\item 右边的运算称为周期卷积(periodic convolution)
 			\end{itemize}

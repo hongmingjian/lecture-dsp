@@ -405,7 +405,7 @@ e^{j\omega_0 t} & \xleftrightarrow{\mathscr{F}} 2\pi\delta(\omega-\omega_0)
 %    \]
     \item 卷积
     \[
-    	x_1(t)*x_2(t) \xleftrightarrow{\mathscr{F}} X_1(j\omega)X_2(j\omega)
+    	x_1(t) \ast x_2(t) \xleftrightarrow{\mathscr{F}} X_1(j\omega)X_2(j\omega)
     \]
     	\begin{itemize}
 		\item 因为LTI系统的频率响应$H(j\omega)$是单位脉冲响应$h(t)$的傅立叶变换
@@ -414,13 +414,13 @@ e^{j\omega_0 t} & \xleftrightarrow{\mathscr{F}} 2\pi\delta(\omega-\omega_0)
 		\]
 		所以
 		\[
-			x(t)*h(t) \xleftrightarrow{\mathscr{F}} X(j\omega)H(j\omega)
+			x(t) \ast h(t) \xleftrightarrow{\mathscr{F}} X(j\omega)H(j\omega)
 		\]
     	\end{itemize}
 
     \item 相乘
     \[
-    	x_1(t)x_2(t) \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi} \int_{-\infty}^{\infty}X_1(j\theta)X_2(j(\omega-\theta))d\theta
+    	x_1(t)x_2(t) \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi} \int_{-\infty}^{\infty}X_1(j\theta)X_2(j(\omega-\theta))d\theta = X_1(j\omega) \ast X_2(j\omega)
     \]    	
     \end{itemize}
   \end{frame}   
@@ -776,11 +776,11 @@ $H_{hp}(e^{j\omega})=H_{lp}(e^{j(\omega-\pi)})$
     \begin{itemize}
     \item 卷积
     \[
-    	x_1[n]*x_2[n] \xleftrightarrow{\mathscr{F}} X_1(e^{j\omega})X_2(e^{j\omega})
+    	x_1[n] \ast x_2[n] \xleftrightarrow{\mathscr{F}} X_1(e^{j\omega})X_2(e^{j\omega})
 	\]    
     \item 相乘
     \[
-    	x_1[n]x_2[n] \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi}\int_{2\pi}X_1(e^{j\theta})X_2(e^{j(\omega-\theta)})d\theta
+    	x_1[n]x_2[n] \xleftrightarrow{\mathscr{F}} \frac{1}{2\pi}\int_{2\pi}X_1(e^{j\theta})X_2(e^{j(\omega-\theta)})d\theta = X_1(e^{j\omega}) \circledast X_2(e^{j\omega})
 	\] 	
 		\begin{itemize}
 		\item 注意：右边是周期卷积
