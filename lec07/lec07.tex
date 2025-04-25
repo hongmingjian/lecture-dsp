@@ -71,7 +71,7 @@
     	\end{itemize}
 	\item 取$N\geq N_1$，构造一个周期为$N$的信号$\tilde{x}[n]$，使得$\tilde{x}[n]$在一个周期内等于$x[n]$，即以N为周期进行延拓
 		\[
-			\tilde{x}[n]=\sum_{r=-\infty}^{\infty} x[n-rN]
+			\tilde{x}[n]=\sum_{r=-\infty}^{\infty} x[n+rN]
 		\]
 		\begin{itemize}
 		\item 为简洁起见，记
@@ -101,6 +101,7 @@
 		\begin{itemize}
 		\item 显然，$\tilde{X}[k]=X[((k))_N]$
 		\end{itemize}
+	{\color{red}即$x[n]$的N点DFT，是$\tilde{x}[n]$的DTFS系数$\tilde{X}[k]$的一个周期}
 	\item 可以从$X[k]$中恢复$x[n]$，即离散傅立叶逆变换(IDFT)
 		\[
 			x[n] = \sum_{k=0}^{N-1} X[k] e^{jk(2\pi/N)n}, n=0, 1, \hdots, N-1
@@ -516,7 +517,7 @@
     \[
 	    F[x, v] = \sum_{y=0}^{N-1} f[x, y] e^{-j2\pi vy/N}
     \]
-    也就是说，2-D DFT可以通过1-D DFT计算：先逐行做1-D DFT，然后再逐列做1-D DFT。    
+    也就是说，{\color{red}2-D DFT可以通过1-D DFT计算：先逐行(列)做1-D DFT，然后再逐列(行)做1-D DFT}。    
     \end{itemize}
   \end{frame}  
     
