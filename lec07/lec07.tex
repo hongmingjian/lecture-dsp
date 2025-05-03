@@ -133,7 +133,7 @@
 	\item 记为
 		\[
 			x[n] \xleftrightarrow{\mathscr{DFT}} X[k]
-		\]		
+		\]	
     \end{itemize}
   \end{frame} 	
 	
@@ -150,12 +150,12 @@
 	\[
 	\mathbf{D}_N=
     \begin{pmatrix}
-1      & 1   & 1     & ... & 1 \\
-1      & W_N & W_N^2 & ... & W_N^{N-1} \\
-1      & W_N^2 & W_N^4 & ... & W_N^{2(N-1)} \\
+1      & 1   & 1     & \hdots & 1 \\
+1      & W_N & W_N^2 & \hdots & W_N^{N-1} \\
+1      & W_N^2 & W_N^4 & \hdots & W_N^{2(N-1)} \\
 \vdots & \vdots & \vdots  & \ddots & \vdots \\
-1      & W_N^{N-2} & W_N^{2(N-2)} & ... & W_N^{(N-1)(N-2)} \\
-1      & W_N^{N-1} & W_N^{2(N-1)} & ... & W_N^{(N-1)^2} \\
+1      & W_N^{N-2} & W_N^{2(N-2)} & \hdots & W_N^{(N-1)(N-2)} \\
+1      & W_N^{N-1} & W_N^{2(N-1)} & \hdots & W_N^{(N-1)^2} \\
 
 	\end{pmatrix}
 	, W_N  = e^{-j(2\pi/N)}
@@ -368,18 +368,18 @@
 	\[
 			%x_1[n] \textcircled{N} x_2[n] =
         \begin{pmatrix}
-        x_2[0]      & x_2[N-1]   & x_2[N-2]  & ... & x_2[1] \\
-        x_2[1]      & x_2[0]     & x_2[N-1]  & ... & x_2[2] \\
-        x_2[2]      & x_2[1]     & x_2[0]    & ... & x_2[3] \\
+        x_2[0]      & x_2[N-1]   & x_2[N-2]  & \hdots & x_2[1] \\
+        x_2[1]      & x_2[0]     & x_2[N-1]  & \hdots & x_2[2] \\
+        x_2[2]      & x_2[1]     & x_2[0]    & \hdots & x_2[3] \\
         \vdots & \vdots & \vdots & \ddots & \vdots           \\
-        x_2[N-2]    & x_2[N-3]   & x_2[N-4]  & ... & x_2[N-1] \\
-        x_2[N-1]    & x_2[N-2]   & x_2[N-3]  & ... & x_2[0] \\
+        x_2[N-2]    & x_2[N-3]   & x_2[N-4]  & \hdots & x_2[N-1] \\
+        x_2[N-1]    & x_2[N-2]   & x_2[N-3]  & \hdots & x_2[0] \\
         \end{pmatrix}	
         \begin{pmatrix}
         x_1[0]  \\
         x_1[1]  \\
         x_1[2]  \\
-        ...     \\
+         \vdots  \\
         x_1[N-2] \\
         x_1[N-1]
         \end{pmatrix}
