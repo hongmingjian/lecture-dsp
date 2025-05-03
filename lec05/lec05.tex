@@ -1,4 +1,4 @@
-\documentclass[CJKutf8,xcolor=pdftex,dvipsnames,table]{beamer}
+\documentclass[CJKutf8,dvipsnames,table]{beamer}
 \usepackage{hyperref}
 \hypersetup{
   pdftitle={Signals and Systems},
@@ -8,7 +8,29 @@
   colorlinks={true},
   linkcolor={blue},
 }
-\usepackage{CJKutf8}
+
+%% https://tex.stackexchange.com/questions/47576/combining-ifxetex-and-ifluatex-with-the-logical-or-operation
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex % a new conditional starts as false
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+   \xetexorluatextrue
+\fi
+\usepackage{ifplatform}
+\ifxetexorluatex
+	\usepackage[slantfont,boldfont]{xeCJK}
+	\ifwindows
+		\setCJKmainfont{SimSun} % Windows默认中文字体：中易宋体
+	\fi
+	\ifmacosx
+		\setCJKmainfont{STSong} % MacOS默认中文字体：华文宋体
+	\fi
+	\iflinux
+		\setCJKmainfont{Noto Serif CJK SC} % Linux默认中文字体：思源宋体(By Adobe & Google)
+	\fi
+\else
+	\usepackage{CJKutf8}
+\fi
+
 \usepackage[export]{adjustbox}
 \usepackage{mathptmx} %pdfTeX error: pdflatex (file fmex9.pfb): cannot open Type 1 font file for reading
                                                  %https://forum.ubuntu.com.cn/viewtopic.php?t=269943
@@ -24,7 +46,9 @@
 \setbeamertemplate{navigation symbols}{}
 
 \begin{document}
+\ifxetexorluatex\else
 \begin{CJK*}{UTF8}{song}
+\fi
 
   \title{数字信号处理}
   \subtitle{第5讲：傅立叶变换}
@@ -810,7 +834,9 @@ $H_{hp}(e^{j\omega})=H_{lp}(e^{j(\omega-\pi)})$
     \end{center}
   \end{frame} 
   	        
+\ifxetexorluatex\else
 \end{CJK*}
+\fi
 \end{document}
 
 %%% Local Variables: 
