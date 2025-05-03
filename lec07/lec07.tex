@@ -296,15 +296,15 @@
     \begin{itemize}
     \item 循环卷积(Circular convolution)：若$x_1[n]$和$x_2[n]$的长度分别是$N_1$和$N_2$，定义$N$点循环卷积
     \[
-    	x_1[n] \textcircled{N} x_2[n]=\sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1
+    	x_1[n] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} x_2[n]=\sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1
     \]
     其中$N\geq max(N_1, N_2)$。则
     \[
-		x_1[n] \textcircled{N} x_2[n] \xleftrightarrow{\mathscr{DFT}} X_1[k]X_2[k]
+		x_1[n] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} x_2[n] \xleftrightarrow{\mathscr{DFT}} X_1[k]X_2[k]
 	\]    
 	根据对偶性质，反过来也成立
 	\[
-		x_1[n]x_2[n] \xleftrightarrow{\mathscr{DFT}} \frac{1}{N} X_1[k] \textcircled{N} X_2[k]
+		x_1[n]x_2[n] \xleftrightarrow{\mathscr{DFT}} \frac{1}{N} X_1[k] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} X_2[k]
 	\] 
 	\end{itemize}
   \end{frame}         
@@ -339,7 +339,7 @@
     \begin{itemize}
     \item $x_1[n]$和$x_2[n]$的$N$点循环卷积
     \[
-    	x_1[n] \textcircled{N} x_2[n]=\sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1
+    	x_1[n] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} x_2[n]=\sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1
     \]    
     \item 具体计算
     	\begin{itemize}
@@ -366,7 +366,7 @@
     \begin{itemize}
     \item $N$点循环卷积的右边可以写成矩阵形式
 	\[
-			%x_1[n] \textcircled{N} x_2[n] =
+			%x_1[n] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} x_2[n] =
         \begin{pmatrix}
         x_2[0]      & x_2[N-1]   & x_2[N-2]  & \hdots & x_2[1] \\
         x_2[1]      & x_2[0]     & x_2[N-1]  & \hdots & x_2[2] \\
@@ -406,7 +406,7 @@
     \item 根据定义
     \begin{align*}
 	    x_L[n] = x_1[n] \ast x_2[n] & = \sum_{m=0}^{N_1-1}x_1[m]x_2[n-m], n \in \mathbb{Z}    \\ 	
-	    x_C[n] = x_1[n] \textcircled{N} x_2[n] & = \sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1 	    
+	    x_C[n] = x_1[n] \raisebox{0pt}{\textcircled{\raisebox{-.9pt}{N}}} x_2[n] & = \sum_{m=0}^{N-1}x_1[m]x_2[((n-m))_N], 0 \leq n \leq N-1 	    
     \end{align*}
     其中，
     \begin{align*}
