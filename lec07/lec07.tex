@@ -111,7 +111,7 @@
 
   %% PAGE
   \begin{frame}
-    \frametitle{DFT}
+    \frametitle{定义}
     \begin{itemize}
 	\item 长度为$N_1$的信号$x[n]$的$N$点DFT，$N \geq N_1$
 		\[
@@ -134,7 +134,7 @@
 	
   %% PAGE
   \begin{frame}
-    \frametitle{DFT：矩阵表示}
+    \frametitle{矩阵表示}
     \begin{itemize}
 	\item 记
 	\begin{align*}
@@ -155,28 +155,17 @@
 	\end{pmatrix}
 	, W_N  = e^{-j(2\pi/N)}
 	\]	
-	\end{itemize}
-  \end{frame} 	
-  	
-  %% PAGE
-  \begin{frame}
-    \frametitle{DFT：矩阵表示}
-    \begin{itemize}
 	\item DFT
 	\[
 		\mathbf{X}=\mathbf{D}_N \mathbf{x}
 	\]
 	\item IDFT
 	\[
-		\mathbf{x}=\mathbf{D}_N^{-1} \mathbf{X}
-	\]
-	且
-	\[
-		\mathbf{D}_N^{-1}=\frac{1}{N}\mathbf{D}_N^{*}
+		\mathbf{x}=\mathbf{D}_N^{-1} \mathbf{X}=\frac{1}{N}\mathbf{D}_N^{*} \mathbf{X}
 	\]
 	\end{itemize}
-  \end{frame} 
-  	
+  \end{frame}
+
   %% PAGE
   \begin{frame}
     \frametitle{Questions}
