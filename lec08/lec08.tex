@@ -98,7 +98,7 @@
     令$s=\sigma + j\omega$，可以写成
     \begin{align*}
     	X(s) = X(\sigma + j\omega) & = \int_R x(t)e^{-(\sigma + j\omega)t}dt \\
-	                        & = \int_R [x(t)e^{-\sigma t}] e^{-j\omega t}dt \\
+	                        %& = \int_R [x(t)e^{-\sigma t}] e^{-j\omega t}dt \\
 	                        & = \mathscr{F}\{ x(t) e^{-\sigma t} \}
     \end{align*}    
     当$\sigma=0$，即$s=j\omega$时，
@@ -106,6 +106,7 @@
     	\left. X(s) \right\vert_{s=j\omega} = \mathscr{F}\{x(t)\}
     \]
     拉普拉斯变换退化为傅立叶变换。
+    \item 在傅立叶变换中，频率$\omega$是实数，称为实频域，简称频域；而拉普拉斯变换中频率$s$是复数，一般称为复频域。
     \end{itemize}
   \end{frame}  
       
@@ -493,12 +494,12 @@ x(t) =
   \begin{frame}
     \frametitle{拉普拉斯逆变换}
     \begin{itemize}
-    \item 用上述的定义求拉普拉斯逆变换涉及到复变函数中的围线积分(contour integration)，比较麻烦。对于有理变换，有更加简便的方法。
+    \item 用定义直接求拉普拉斯逆变换涉及到复变函数中用留数定理求解围线积分(contour integration)，比较麻烦。对于有理变换，有更加简便的方法。
 	\item 有理拉普拉斯变换可以展开成部分分式之和
 	\[
 		X(s) = \sum_{i=1}^{r} \sum_{k_i=1}^{N_i} \frac{A_{i,k_i}}{(s+a_i)^{k_i}}
 	\]
-	利用已知的变换
+	利用已知的变换对
 	\begin{align*}
 		\frac{t^{n-1}}{(n-1)!}e^{-at}u(t) & \xleftrightarrow{\mathscr{L}} \frac{1}{(s+a)^n}, \operatorname{Re}\{s\} > -a \\
 		-\frac{t^{n-1}}{(n-1)!}e^{-at}u(-t) & \xleftrightarrow{\mathscr{L}} \frac{1}{(s+a)^n}, \operatorname{Re}\{s\} < -a
@@ -607,7 +608,7 @@ x(t) =
 	\[
 	X(s)=s-a
 	\]
-	$a$是一个零点，对于$s$平面中任意一点$s_1$，称$s_1-a$为零点向量
+	则$a$是一个零点，对于$s$平面中任意一点$s_1$，称$s_1-a$为零点向量
 		\begin{itemize}
 		\item $X(s_1)$的模就是向量的长度，相位就是该向量与实轴$\operatorname{Re}$的夹角
 		\end{itemize}
@@ -615,7 +616,7 @@ x(t) =
 	\[
 	X(s)=\frac{1}{s-a}
 	\]
-	$a$是一个极点，对于$s$平面中任意一点$s_1$，称$s_1-a$为极点向量
+	则$a$是一个极点，对于$s$平面中任意一点$s_1$，称$s_1-a$为极点向量
 		\begin{itemize}
 		\item $X(s_1)$的模就是向量的长度的倒数，相位就是该向量与实轴$\operatorname{Re}$的夹角的负值
 		\end{itemize}
@@ -654,7 +655,7 @@ X(j\omega)=\frac{1}{j\omega+1/\tau}
     \begin{center}
       \includegraphics[scale=.5]{ss-c-f9-16}
     \end{center}
-    和频率响应特性
+    和频率及相位响应曲线
     \begin{center}
       \includegraphics[scale=.27]{ss-c-f9-18a}
       \includegraphics[scale=.27]{ss-c-f9-18b}
@@ -672,7 +673,7 @@ X(j\omega)=\frac{1}{j\omega+1/\tau}
 \[
 X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
 \]
-它的零点-极点图和频率响应特性
+它的零点-极点图和频率及相位响应曲线
     \begin{center}
       \includegraphics[scale=.22]{ss-c-f9-21}
     \end{center}
@@ -685,7 +686,7 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
     	arg\{ H(j\omega) \}= \theta_1 - \theta_2 = \pi - 2\theta_2 = \pi - 2arctan(\frac{\omega}{a})
     	\]
     	\end{itemize}
-	是一个全通系统(all-pass system)。
+	这是一个全通系统(all-pass system)。
     \end{itemize}     
   \end{frame}     
     
@@ -733,11 +734,6 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
     \frametitle{性质}
     \begin{itemize}
     \item 2、时域平移 \\
-    若
-    \[
-    x(t) \xleftrightarrow{\mathscr{L}} X(s), ROC=R
-    \]
-    则
     \[
     x(t-t_0) \xleftrightarrow{\mathscr{L}} e^{-st_0}X(s), ROC=R
     \]
@@ -929,6 +925,7 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
     	H(s) = \frac{Y(s)}{X(s)} = \frac{\sum_{k=0}^{M} b_k s^k}{\sum_{k=0}^{N} a_k s^k}    
     \]
     即，一个由线性常系数微分方程表征的LTI系统，且系统函数总是有理的。
+    \item 通过拉普拉斯变换，可以把微分方程转换为代数方程进行求解。
     \end{itemize}
   \end{frame}    
   
@@ -936,11 +933,12 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
   \begin{frame}
     \frametitle{例子}
     \begin{itemize}
-    \item 对于下面的系统
+    \item 对于系统
     \[
     	\frac{dy(t)}{dt} + 3y(t) = x(t)
     \]
-    两边进行拉普拉斯变换，应用线性和微分性质，可得
+    求它的冲激响应。
+    \item 两边进行拉普拉斯变换，应用线性和微分性质，可得
     \[
     	sY(s) + 3Y(s) = X(s)
     \]
