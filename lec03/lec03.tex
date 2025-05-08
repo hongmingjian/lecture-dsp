@@ -320,8 +320,27 @@ x[k]\delta[n-k] =
 		\delta'(t) \ast x(t) = \int_{-\infty}^{\infty} \delta'(u)x(t-u) du = -\left. \frac{d}{du}x(t-u) \right\vert_{u=0} = x'(t)
 	\]
     \end{itemize} 
-  \end{frame}     
-    
+  \end{frame}  
+     
+  %% PAGE
+  \begin{frame}
+    \frametitle{卷积(Convolution)}
+    \begin{itemize}
+    \item 也可以这样
+    \[
+    	\frac{d}{dt} \int_{-\infty}^{\infty} x(\tau)h(t-\tau) d\tau =  \int_{-\infty}^{\infty} x(\tau) \frac{d}{dt} h(t-\tau) d\tau = \int_{-\infty}^{\infty} \frac{d}{dt} x(t-\tau) h(\tau) d\tau 
+    \]
+	所以	
+    \[
+		\frac{d}{dt} [x(t) \ast h(t)] = x(t) \ast [\frac{d}{dt}h(t)] = [\frac{d}{dt}x(t)] \ast h(t)
+	\]
+	把$h(t)$换成$\delta(t)$
+	\[
+		x'(t) = x(t) \ast \delta'(t) = x'(t) \ast \delta(t)	
+	\]
+    \end{itemize} 
+  \end{frame}   
+      
 \ifxetexorluatex\else
 \end{CJK*}
 \fi
