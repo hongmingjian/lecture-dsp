@@ -303,6 +303,22 @@ x[k]\delta[n-k] =
         \item 序列$x_1$与$x_2$的卷积：$(x_1*x_2)[n]=\sum_{k=-\infty}^{\infty}x_1[k]x_2[n-k], \forall n \in \mathbb{Z}$
         \end{itemize}   
     \item 因此，LTI系统输出是输入$x$与单位冲激响应$h$的卷积
+    \item 首先
+    \[
+    	\delta(t) \ast x(t) = \int_{-\infty}^{\infty} x(\tau) \delta(t - \tau)d\tau = x(t)
+    \]
+    然后，根据
+    \[
+    	[x(t)\delta(t)]' = x'(t)\delta(t) + \delta'(t)x(t) 
+	\]
+	两边同时求积分，有
+	\[
+    	\int_{-\infty}^{\infty} \delta'(t)x(t) dt = \left. x(t)\delta(t) \right\vert_{-\infty}^{\infty} - \int_{-\infty}^{\infty} x'(t)\delta(t) dt = -x'(0)
+    \]
+	所以	
+    \[
+		\delta'(t) \ast x(t) = \int_{-\infty}^{\infty} \delta'(u)x(t-u) du = \left. \frac{d}{du}x(t-u) \right\vert_{u=0} = x'(t)
+	\]
     \end{itemize} 
   \end{frame}     
     
