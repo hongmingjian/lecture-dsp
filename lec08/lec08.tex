@@ -707,7 +707,7 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
   \begin{frame}
     \frametitle{性质}
     \begin{itemize}
-    \item 1、线性
+    \item 1、线性 \\
     若
     \[
     x_1(t) \xleftrightarrow{\mathscr{L}} X_1(s), ROC=R_1
@@ -763,7 +763,7 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
 			X_1(s)=\frac{s+1}{s+2}, \operatorname{Re}\{s\} > -2
 			\]
 			\[
-			X_1(s)=\frac{s+2}{s+1}, \operatorname{Re}\{s\} > -1
+			X_2(s)=\frac{s+2}{s+1}, \operatorname{Re}\{s\} > -1
 			\]
 			则$X_1(s)X_2(s)=1$，ROC是整个s平面。
 			\end{itemize}
@@ -902,7 +902,9 @@ X(s)=\frac{s-a}{s+a}, \operatorname{Re}\{s\} > -a
     	\int_R |h(t)|dt < \infty
     \]
     此时，单位冲激响应的傅立叶变换(即频率响应)$H(j\omega)$存在。所以，
-    \item 当且仅当系统函数$H(s)$的ROC包含$s$平面的虚轴$j\omega$，即$\operatorname{Re}\{s\}=0$时，LTI系统是稳定的。
+    	\begin{itemize}
+    	\item 当且仅当系统函数$H(s)$的ROC包含$s$平面的虚轴$j\omega$(即$\operatorname{Re}\{s\}=0$)时，LTI系统是稳定的。
+    	\end{itemize}
 	\item 综合起来：一个因果的LTI系统是稳定的，当且仅当$H(s)$最右边的极点必须位于$j\omega$轴的左边，即所有极点的实部必须是负数。
 	
     \end{itemize}
